@@ -1,0 +1,87 @@
+body
+{
+    background: url("https://img.freepik.com/free-vector/background-with-wavy-lines-copy-space_677411-988.jpg?w=826&t=st=1701607531~exp=1701608131~hmac=51347d200c00b50612d4182a4e3c37fbaa9b0c7e8457cd1b484629306402cba5");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    background-position: center;
+    background-attachment: fixed;
+}
+.logout-btn-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+.num{
+    background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-size: 45px;
+    letter-spacing: 3px;
+}
+.binary{
+    background-image:URL(../IMAGES/binary.gif);
+    border:3px solid whitesmoke;
+    box-shadow: 9px 24px 66px 2px rgba(135,48,166,0.42);
+    -webkit-box-shadow: 9px 24px 66px 2px rgba(135,48,166,0.42);
+    -moz-box-shadow: 9px 24px 66px 2px rgba(135,48,166,0.42);
+    font-size: 3rem;
+    height:16rem;   
+}
+.decimal{
+    background-image:URL(../IMAGES/decimal.gif);
+    border:3px solid whitesmoke;
+    box-shadow: 9px 24px 66px 2px rgba(135,48,166,0.42);
+    -webkit-box-shadow: 9px 24px 66px 2px rgba(135,48,166,0.42);
+    -moz-box-shadow: 9px 24px 66px 2px rgba(135,48,166,0.42);
+    
+    font-size: 3rem;
+    height:16rem;
+    
+}
+.octal{
+    background-image:URL(../IMAGES/octal.gif);
+    background-position: center;
+    background-size: 50%;
+    border:3px solid whitesmoke;
+    box-shadow: 9px 24px 66px 2px rgba(135,48,166,0.42);
+    -webkit-box-shadow: 9px 24px 66px 2px rgba(135,48,166,0.42);
+    -moz-box-shadow: 9px 24px 66px 2px rgba(135,48,166,0.42);
+    font-size: 3rem;
+    height:16rem;
+    
+}
+.hexa{
+    background-image:URL(../IMAGES/hexa.gif);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    border:3px solid whitesmoke;
+    box-shadow: 9px 24px 66px 2px rgba(135,48,166,0.42);
+    -webkit-box-shadow: 9px 24px 66px 2px rgba(135,48,166,0.42);
+    -moz-box-shadow: 9px 24px 66px 2px rgba(135,48,166,0.42);
+    font-size: 3rem;
+    height:16rem;
+    
+}
+button{
+    width:150px;
+}
+.text
+{
+  padding-top: 15px;
+   font-size: 2rem;
+}
+.texts
+{
+  padding-top: 5px;
+   font-size: 1rem;
+}
+.dropdown-menu{
+  background: linear-gradient(90deg, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
+.footer{
+    
+    background-color: #9f7bba;
+    font-family:monospace;
+}
