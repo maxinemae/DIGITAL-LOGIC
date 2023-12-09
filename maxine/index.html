@@ -1,209 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number Conversion</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="index.js"></script>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number Conversion</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  
 </head>
 <body>
-   <h1 class="num mt-5 text-center ">NUMBER SYSTEM CONVERSION</h1>
-<div class="container-fluid mt-5 d-flex justify-content-center align-items-center">
-</div>
-  <div class="container mt-5">
-    <div class="row text-center text-dark">
-<!---Binary-->
-      <div class="col-lg-3 col-6">
-        <div class="binary rounded-5">
-          <h1 class="text text-white">BINARY</h1>
-          <p class="texts text-secondary">conversion</p>
-          <div class="dropdown">
-            <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">
-             BINARY
-            </button> 
-            <ul class="dropdown-menu bg-light">
-              <li><a class="dropdown-item" onclick="bintodecimal()">Binary to Decimal</a></li>
-              <li><a class="dropdown-item" onclick="bintooctal()">Binary to Octal</a></li>
-              <li><a class="dropdown-item" onclick="bintohexa()">Binary to HexaDecimal</a></li>
-            </ul>
-          </div>
-        </div></div>
-<!---Decimal-->
-      <div class="col-lg-3 col-6">
-        <div class="decimal rounded-5">
-        <h1 class="text text-white">DECIMAL</h1>
-        <p class=" texts text-secondary">conversion</p>
-        <div class="dropdown">
-        <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown">
-          DECIMAL
-         </button> 
-         <ul class="dropdown-menu bg-dark">
-           <li><a class="dropdown-item" onclick="decitobinary()">Decimal to Binary</a></li>
-           <li><a class="dropdown-item" onclick="decitooctal()">Decimal to Octal</a></li>
-           <li><a class="dropdown-item" onclick="decitohexa()">Decimal to HexaDecimal</a></li>
-         </ul>
-       </div></div></div>
-<!---Octal-->
-      <div class="col-lg-3 col-6">
-        <div class="octal rounded-5">
-          <h1 class="text text-white">OCTAL</h1>
-        <p class="texts text-secondary">conversion</p>
-        <div class="dropdown">
-          <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">
-            OCTAL
-           </button> 
-           <ul class="dropdown-menu bg-warning">
-             <li><a class="dropdown-item" onclick="octaltobinary()">Octal to Binary</a></li>
-             <li><a class="dropdown-item" onclick="octaltodecimal()">Octal to Decimal</a></li>
-             <li><a class="dropdown-item" onclick="octaltohexa()">Octal to HexaDecimal</a></li>
-           </ul>
-         </div></div></div>
-<!---Hexa-->
-      <div class="col-lg-3 col-6">
-        <div class="hexa rounded-5">
-          <h1 class="text text-white">HEXADECIMAL</h1>
-        <p class="texts text-secondary">conversion</p>
-        <div class="dropdown">
-          <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown">
-            HEXADECIMAL
-           </button> 
-           <ul class="dropdown-menu bg-dark">
-             <li><a class="dropdown-item" onclick="hexatobinary()">HexaDecimal to Binary</a></li>
-             <li><a class="dropdown-item" onclick="hexatodecimal()">HexaDecimal to Decimal</a></li>
-             <li><a class="dropdown-item" onclick="hexatooctal()">HexaDecimal to Octal</a></li>
-           </ul>
-         </div></div></div>
+    <a href="login.html" class="btn btn-info" id="logoutBtn" onclick="logout()">Log Out</a>
+     <div id="title"><center>NUMBER CONVERSION</center></div>
+
+  <div class="container">
+    <div class="conversion-dropdown form-group">
+      <label class="firstoption" for="sourceConversion">Choose First Option</label>
+      <select class="form-control" id="sourceConversion">
+        <option value="binary">Choose Conversion</option>
+        <option value="binary">Binary</option>
+        <option value="octal">Octal</option>
+        <option value="decimal">Decimal</option>
+        <option value="hexadecimal">Hexadecimal</option>
+      </select>
+    </div>
+
+    <div class="conversion-dropdown form-group">
+      <label class="firstoption" for="destinationConversion">Choose Second Option:</label>
+      <select class="form-control" id="destinationConversion">
+        <option value="binary">Choose Conversion</option>
+        <option value="binary">Binary</option>
+        <option value="octal">Octal</option>
+        <option value="decimal">Decimal</option>
+        <option value="hexadecimal">Hexadecimal</option>
+      </select>
+    </div>
+
+    <div class="input-group">
+      <label class="firstoutput" for="numberInput">Enter number:</label>
+      <input type="text" class="form-control" id="numberInput" oninput="validateInput()">
+    </div>
+
+    <div class="input-group">
+      <label class="firstoutput" for="convertedOutput">Converted Output:</label>
+      <input type="text" class="form-control" id="convertedOutput" readonly>
     </div>
   </div>
-
-<!---Binary to decimal-->
-  <div class="text-white d-flex align-items-center justify-content-center">
-<div id="bintodeci" class="mt-5 text-center" style="display:none;">
-    <h1>Binary to Decimal</h1>
-    <label for="bintodeciInput">Binary: </label>
-    <input type="text" id="bintodeciInput" class="rounded-2 text-dark" placeholder="ex. 0/1">
-    <button onclick="convertBintoDeci()" class="rounded-2  text-dark">Convert</button>
-    <button onclick="deleteInput('bintodeciInput')" class="rounded-2 text-dark">Delete</button>
-    <p class="">Decimal: <span style="font-size:20px;" id="deci"></span></p>
-  </div>
-
-<!---Binary to Octal--> 
-  <div id="bintooctal" class="mt-5 text-center" style="display:none;">
-    <h1>Binary to Octal</h1>
-    <label for="bintooctalInput">Binary: </label>
-    <input type="text" id="bintooctalInput" class="rounded-2 text-dark" placeholder="ex. 0/1">
-    <button onclick="convertBintoOctal()" class="rounded-2 text-dark">Convert</button>
-    <button onclick="deleteInput('bintooctalInput')" class="rounded-2 text-dark">Delete</button>
-    <p class="">Octal: <span style="font-size:20px;" id="octa"></span></p>
-  </div>
-
-<!---Binary to Hexa decimal-->
-  <div id="bintohexa" class="mt-5 text-center" style="display:none;">
-    <h1>Binary to HexaDecimal</h1>
-    <label for="hexaInput">Binary: </label>
-    <input type="text" id="hexaInput" class="rounded-2 text-dark" placeholder="ex. 0/1">
-    <button onclick="convertBintoHexa()" class="rounded-2 text-dark">Convert</button>
-    <button onclick="deleteInput('hexaInput')" class="rounded-2 text-dark">Delete</button>
-    <p class="">HexaDecimal: <span style="font-size:20px;" id="hexa"></span></p>
+  <div class="btn-group" role="group">
+    <button class="btn btn-success" id="convertBtn" onclick="convertNumber()">Convert</button>
+    <button class="btn btn-secondary" id="clearBtn" onclick="clearFields()">Clear</button>
   </div>
   
-<!---Decimal to Binary-->
-  <div id="decitobin" class="mt-5 text-center" style="display:none;">
-    <h1>Decimal to Binary</h1>
-    <label for="decimalInput">Decimal:</label>
-    <input type="text" id="decimalInput" class="rounded-2 text-dark" placeholder="ex. 123">
-    <button onclick="convertDecitoBin()" class="rounded-2 text-dark">Convert</button>
-    <button onclick="deleteInput('decimalInput')" class="rounded-2 text-dark">Delete</button>
-    <p class="">Binary: <span style="font-size:20px;" id="decitobinary"></span></p>
+  <div id="info">
+    <center><p><strong><i>LEGEND:</strong></p></center>
+    <p><strong>Binary:</strong> Enter 0 or 1</p>
+    <p><strong>Octal:</strong> Enter 0-7</p>
+    <p><strong>Decimal:</strong> Enter any whole number</p>
+    <p><strong>Hexadecimal:</strong> Enter 0-9 or A-F</i></p>
   </div>
+  
 
-<!---Decimal to Octal-->
-  <div id="decitooctal" class="mt-5 text-center" style="display:none;">
-<h1>Decimal to Octal</h1>
-<label for="decitooctalInput">Decimal:</label>
-<input type="text" id="decitooctalInput" class="rounded-2 text-dark" placeholder="ex. 123">
-<button onclick="decitooct()" class="rounded-2 text-dark">Convert</button>
-<button onclick="deleteInput('decitooctalInput')" class="rounded-2 text-dark">Delete</button>
-<p class="">Octal: <span span style="font-size:20px;" id="octalOutput"></span></p>
-</div>
-
-<!---Decimal to Hexa Decimal-->
-<div id="decitohexa" class="mt-5 text-center" style="display:none;">
-<h1>Decimal to HexaDecimal</h1>
-<label for="decitohexaInput">Decimal: </label>
-<input type="text" id="decitohexaInput" class="rounded-2 text-dark" placeholder="ex. 123">
-<button onclick="convertDecitoHexa()"  class="rounded-2 text-dark">Convert</button>
-<button onclick="deleteInput('decitohexaInput')" class="rounded-2 text-dark">Delete</button>
-<p class="">HexaDecimal: <span span style="font-size:20px;"id="hexaOutput"></span></p>
-</div>
-
-<!---Octal to bin-->
-<div id="octaltobin" class="mt-5 text-center" style="display:none;">
-  <h1>Octal to Binary</h1>
-  <label for="octaltobinaryInput">Octal: </label>
-  <input type="text" id="octaltobinaryInput" class="rounded-2 text-dark" placeholder="ex. 0-7">
-  <button onclick="convertOctaltoBin()" class="rounded-2 text-dark">Convert</button>
-  <button onclick="deleteInput('octaltobinaryInput')" class="rounded-2 text-dark">Delete</button>
-  <p class="">Binary:<span span style="font-size:20px;" id="octaltobinaryOutput"></span></p>
-  </div>
-
-<!---Octal to Decimal-->
-<div id="octaltodeci" class="mt-5 text-center" style="display:none;">
-  <h1>Octal to Decimal</h1>
-  <label for="octaltodeciInput">Octal: </label>
-  <input type="text" id="octaltodeciInput" class="rounded-2 text-dark" placeholder="ex. 0-7">
-  <button onclick="convertOctalToDeci()" class="rounded-2 text-dark">Convert</button>
-  <button onclick="deleteInput('octaltodeciInput')" class="rounded-2 text-dark">Delete</button>
-  <p class="">Decimal: <span span style="font-size:20px;" id="octaltodeciOutput"></span></p>
-  </div>
-
-<!---Octal to Hexa Decimal-->
-  <div id="octaltohex" class="mt-5 text-center" style="display:none;">
-    <h1>Octal to HexaDecimal</h1>
-    <label for="octaltohexaInput">Octal: </label>
-    <input type="text" id="octaltohexaInput" class="rounded-2 text-dark" placeholder="ex. 0-7">
-    <button onclick="convertOctalToHexa()" class="rounded-2 text-dark">Convert</button>
-    <button onclick="deleteInput('octaltohexaInput')" class="rounded-2 text-dark">Delete</button>
-    <p class="">HexaDecimal: <span span style="font-size:20px;" id="octaltohexaOutput"></span></p>
-    </div>
-
-<!---Hexa Decimal to Binary-->
-   <div id="hexatobin" class="mt-5 text-center" style="display:none;">
-    <h1>Hexadecimal to Binary</h1>
-<label for="hexatobinInput">HexaDecimal: </label>
-<input type="text" id="hexatobinInput"  class="rounded-2 text-dark" placeholder="ex. 0-9/A-F">
-<button onclick="convertHexToBinary()" class="rounded-2 text-dark">Convert</button>
-<button onclick="deleteInput('hexatobinInput')" class="rounded-2 text-dark">Delete</button>
-<p class="">Binary: <span span style="font-size:20px;" id="hexatobinOutput"></span></p>
-    </div>
-
-<!---Hexa Decimal to Decimal-->
-   <div id="hexatodeci" class="mt-5 text-center" style="display:none;">
-    <h1>HexaDecimal to Decimal</h1>
-<label for="hexatodeciInput">HexaDecimal: </label>
-<input type="text" id="hexatodeciInput"  class="rounded-2 text-dark" placeholder="ex. 0-9/A-F">
-<button onclick="convertHexaToDecimal()" class="rounded-2 text-dark">Convert</button>
-<button onclick="deleteInput('hexatodeciInput')" class="rounded-2 text-dark">Delete</button>
-<p class="">Decimal: <span span style="font-size:20px;" id="hexatodeciOutput"></span></p>
-    </div>
-
-<!---Hexa Decimal to Octal-->
-<div id="hexatooct" class="mt-5 text-center" style="display:none;">
-  <h1>HexaDecimal to Octal</h1>
-<label for="hexatooctalInput">Hexadecimal: </label>
-<input type="text" id="hexatooctalInput"  class="rounded-2 text-dark" placeholder="ex. 0-9/A-F">
-<button onclick="convertHexaToOctal()" class="rounded-2 text-dark">Convert</button>
-<button onclick="deleteInput('hexatooctalInput')" class="rounded-2 text-dark">Delete</button>
-<p class="">Decimal: <span span style="font-size:20px;" id="hexatooctalOutput"></span></p>
-  </div>
-</div> 
-
-<div class="container mt-5 text-center">
-    <button onclick="logout()" class="btn btn-secondary float-end">Logout</button>
-</div>
-
+<script src="index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
