@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Conversion</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2 id="title">Number Conversion </h2>
+    <div class="container-fluid">
+        <div class="row" id="container">
+            <div class="col-md-4" id="conversion-options">
+                <form>
+                    <fieldset>
+                        <legend>Convert From</legend>
+                        <label><input type="radio" name="fromNumberSystem" value="binary" onclick="updateButtons()"> Binary</label><br>
+                        <label><input type="radio" name="fromNumberSystem" value="decimal" onclick="updateButtons()"> Decimal</label><br>
+                        <label><input type="radio" name="fromNumberSystem" value="octal" onclick="updateButtons()"> Octal</label><br>
+                        <label><input type="radio" name="fromNumberSystem" value="hexadecimal" onclick="updateButtons()"> Hexadecimal</label>
+                    </fieldset>
+                    <br>
+                    <fieldset>
+                        <legend>Convert To</legend>
+                        <label><input type="radio" name="toNumberSystem" value="binary" onclick="updateButtons()"> Binary</label><br>
+                        <label><input type="radio" name="toNumberSystem" value="decimal" onclick="updateButtons()"> Decimal</label><br>
+                        <label><input type="radio" name="toNumberSystem" value="octal" onclick="updateButtons()"> Octal</label><br>
+                        <label><input type="radio" name="toNumberSystem" value="hexadecimal" onclick="updateButtons()"> Hexadecimal</label>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div class="col-md-8" id="calculator">
+                <div id="calculator-display">
+                    <input type="text" id="userInput" readonly class="form-control">
+                </div>
+                <div id="calculator-buttons">
+                    <button id="btn1" onclick="appendToDisplay('1')">1</button>
+                    <button id="btn2" onclick="appendToDisplay('2')">2</button>
+                    <button id="btn3" onclick="appendToDisplay('3')">3</button>
+                    <button id="btn4" onclick="appendToDisplay('4')">4</button>
+                    <button id="btn5" onclick="appendToDisplay('5')">5</button>
+                    <button id="btn6" onclick="appendToDisplay('6')">6</button>
+                    <button id="btn7" onclick="appendToDisplay('7')">7</button>
+                    <button id="btn8" onclick="appendToDisplay('8')">8</button>
+                    <button id="btn9" onclick="appendToDisplay('9')">9</button>
+                    <button id="btn0" onclick="appendToDisplay('0')">0</button>
+                    <button id="btnA" onclick="appendToDisplay('A')">A</button>
+                    <button id="btnB" onclick="appendToDisplay('B')">B</button>
+                    <button id="btnC" onclick="appendToDisplay('C')">C</button>
+                    <button id="btnD" onclick="appendToDisplay('D')">D</button>
+                    <button id="btnE" onclick="appendToDisplay('E')">E</button>
+                    <button id="btnF" onclick="appendToDisplay('F')">F</button>
+                    <button id="btn1" onclick="backspace()">←</button> 
+                    <button id="btnConvert" onclick="convert()">
+                        <i class="fas fa-exchange-alt"></i> 
+                    </button>
+                    <button id="btnReset" onclick="resetCalculator()">
+                        <i class="fas fa-undo"></i> 
+                    </button>
+                </div>
+            </div>
+            <button id="logout-button" onclick="logout()">Log-out</button>
+        </div>
+        
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

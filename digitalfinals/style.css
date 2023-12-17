@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css?family=Nova+Mono');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("https://img.pikbest.com/wp/202344/fluid-texture-abstract-flowing-diy-green-art-background_9916884.jpg!sw800");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#container {
+    display: flex;  
+}
+#calculator {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+    background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+    width: 400%;
+    box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+    margin-left: 80px;
+    margin-right: 130px;
+}
+
+#calculator-display {
+    margin-bottom: 10px;
+    font-size: 1rem;
+    width: 93%;
+    box-sizing: border-box;
+    height: 50px;
+    border-radius: 10px;
+    background: rgb(34, 185, 147);
+    box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+    border: none;
+    color: rgb(0, 238, 255);
+    padding: 0 30px;
+}
+#calculator-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    margin: 0 auto;  
+}
+#calculator-buttons button {
+    cursor: pointer;
+    height: 40px;
+    width: 150px;
+    border: 0;
+    font-size: 1rem;
+    border-radius: 5%;
+    background: #125f52;
+    box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+    color: white;
+}
+
+#calculator-buttons button:focus {
+    background: #2f7e6a;
+    box-shadow: inset -5px -5px 9px rgba(47, 153, 118, 0.45), inset 5px 5px 9px rgba(38, 156, 156, 0.3)
+}
+
+#calculator-buttons button:active {
+    transform: scale(0.95);
+}
+#calculator-buttons button:disabled {
+opacity: 0.5; 
+transition: opacity 0.5s ease-in-out;
+}
+
+#userInput {
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    border-radius: 10px;
+    background: transparent;
+    box-shadow: none;
+    color: rgb(54, 50, 50);
+    padding: 0 30px;
+}
+
+fieldset legend {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: "Nova Mono", monospace;
+    margin-left: 100px;    
+    color: black;
+}
+fieldset legend:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+fieldset label {
+    font-size: 15px;
+    font-weight: 500;
+    font-family: "Nova Mono", monospace;
+    margin-left: 140px;
+    color: rgb(243, 239, 239);
+}
+fieldset label:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+#title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-family: "Press Start 2P", cursive;
+    margin-bottom: 60px;
+    margin-top: 30px;
+    color: #106951;
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+#logout-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: #0b5845; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: left;
+}
+@media (max-width: 768px) {
+    #container {
+        flex-direction: column;
+    }
+    #calculator {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+}

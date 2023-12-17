@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Flavors');
+    @import url('https://fonts.googleapis.com/css?family=Nova+Mono');
+
+    body {
+      background-image: url("https://img.freepik.com/premium-photo/oil-easel-journey-into-world-oil-painting_480962-51049.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      width: 100%;
+      background-position: center;
+      background-attachment: fixed;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 100vh;
+      padding: 0 20px;
+    }
+    .container {
+      border: 2px solid rgb(8, 78, 51);
+      border-radius: 10px;
+      padding: 10px;
+      width: 400px;
+      height: 300px;
+      text-align: left;
+      background: rgb(2,0,36);
+      background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+      box-shadow: 10px 7px 5px 0px rgb(11, 78, 75);
+    }
+    .btn {
+      background-color: rgb(17, 77, 74);
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+      color: white;
+      width: 100%;
+      font-family: "Nova Mono", monospace;
+    }
+    .btn:hover {
+      background-image: radial-gradient(circle, #0b4e3b, #0f726f, #459aa0, #74cece);
+      padding: 10px;
+      color: aliceblue;
+    }
+    .type {
+      border: 1px solid black;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 8px;
+      margin-bottom: 10px;
+    }
+    h2{
+      text-align: center;
+      font-family: "Nova Mono", monospace;
+    }
+    h2:hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+    h2.text {
+      text-align: center;
+      font-size: 4rem;
+      letter-spacing: 4px;
+      font-family: Flavors, cursive;
+      margin-left: 90px;
+      animation: blendColor 4s infinite alternate;
+    }
+
+    @keyframes blendColor {
+      0% {
+      background: #145C38;
+      background: linear-gradient(to right, #145C38 0%, #2DCC62 50%, #A1D6A2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      }
+      100% {
+      background: #145C38;
+      background: linear-gradient(to right, #145C38 0%, #A1D6A2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      }
+    }
+    .type::placeholder {
+      font-family: "Nova Mono", monospace;
+      color: #6b6868; 
+      font-size: 14px; 
+    }
+    .type[type="password"]::placeholder {
+      font-family: "Nova Mono", monospace;
+      color: #666262; 
+      font-size: 14px; 
+    }
+    [type="checkbox"]+label {
+     font-family: "Nova Mono", monospace;
+     color: #494646; 
+     font-size: 14px;
+    }
