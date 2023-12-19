@@ -3,204 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Number Convertion</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="index.js"></script>
-    <link rel="shortcut icon" href="IMAGES/convert.png">
-    <link rel="stylesheet" href="style.css">
+    <title>Number Conversion</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Joti+One');
+        @import url('https://fonts.googleapis.com/css?family=Luckiest+Guy');
+        @import url('https://fonts.googleapis.com/css?family=Nova+Mono');
+        @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url("https://img.pikbest.com/wp/202344/fluid-texture-abstract-flowing-diy-green-art-background_9916884.jpg!sw800");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 0;
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        #container {
+            display: flex;  
+        }
+        #calculator {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border-radius: 20px;
+            background: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+            width: 400%;
+            box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+            margin-left: 80px;
+            margin-right: 130px;
+        }
+
+        #calculator-display {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            width: 93%;
+            box-sizing: border-box;
+            height: 50px;
+            border-radius: 10px;
+            background: rgb(34, 185, 147);
+            box-shadow: inset -5px -5px 9px rgba(255,255,255,0.45), inset 5px 5px 9px rgba(94,104,121,0.3);
+            border: none;
+            color: rgb(0, 238, 255);
+            padding: 0 30px;
+        }
+        #calculator-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 5px;
+            margin: 0 auto;  
+        }
+        #calculator-buttons button {
+            cursor: pointer;
+            height: 40px;
+            width: 150px;
+            border: 0;
+            font-size: 1rem;
+            border-radius: 5%;
+            background: #125f52;
+            box-shadow: -5px -5px 9px rgba(255,255,255,0.45), 5px 5px 9px rgba(94,104,121,0.3);
+            color: white;
+        }
+
+        #calculator-buttons button:focus {
+            background: #2f7e6a;
+            box-shadow: inset -5px -5px 9px rgba(47, 153, 118, 0.45), inset 5px 5px 9px rgba(38, 156, 156, 0.3)
+        }
+
+        #calculator-buttons button:active {
+            transform: scale(0.95);
+        }
+        #calculator-buttons button:disabled {
+        opacity: 0.5; /* Adjust the opacity value as needed */
+        transition: opacity 0.5s ease-in-out;
+    }
+
+        #userInput {
+            border: none;
+            width: 100%;
+            box-sizing: border-box;
+            height: 100%;
+            border-radius: 10px;
+            background: transparent;
+            box-shadow: none;
+            color: rgb(54, 50, 50);
+            padding: 0 30px;
+        }
+
+        fieldset legend {
+            font-size: 18px;
+            font-weight: 700;
+            font-family: "Nova Mono", monospace;
+            margin-left: 100px;    
+            color: black;
+        }
+        fieldset legend:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        fieldset label {
+            font-size: 15px;
+            font-weight: 500;
+            font-family: "Nova Mono", monospace;
+            margin-left: 140px;
+            color: rgb(243, 239, 239);
+        }
+        fieldset label:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        #title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-family: "Press Start 2P", cursive;
+            margin-bottom: 60px;
+            margin-top: 30px;
+            color: #106951;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+        #logout-button {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background-color: #0b5845; /* Dark Green */
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+        }
+        @media (max-width: 768px) {
+            #container {
+                flex-direction: column;
+            }
+            #calculator {
+                margin-left: 10px;
+                margin-right: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
-   <h1 class="num mt-5 text-center ">NUMBER SYSTEM CONVERSION</h1>
-<div class="container-fluid mt-5 d-flex justify-content-center align-items-center">
-</div>
-  <div class="container mt-5">
-    <div class="row text-center text-dark">
-<!---Binary-->
-      <div class="col-lg-3 col-6">
-        <div class="binary rounded-5">
-          <h1 class="text text-white">BINARY</h1>
-          <p class="texts text-secondary">conversion</p>
-          <div class="dropdown">
-            <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">
-             BINARY
-            </button> 
-            <ul class="dropdown-menu bg-light">
-              <li><a class="dropdown-item" onclick="bintodecimal()">Binary to Decimal</a></li>
-              <li><a class="dropdown-item" onclick="bintooctal()">Binary to Octal</a></li>
-              <li><a class="dropdown-item" onclick="bintohexa()">Binary to HexaDecimal</a></li>
-            </ul>
-          </div>
-        </div></div>
-<!---Decimal-->
-      <div class="col-lg-3 col-6">
-        <div class="decimal rounded-5">
-        <h1 class="text text-white">DECIMAL</h1>
-        <p class=" texts text-secondary">conversion</p>
-        <div class="dropdown">
-        <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown">
-          DECIMAL
-         </button> 
-         <ul class="dropdown-menu bg-dark">
-           <li><a class="dropdown-item" onclick="decitobinary()">Decimal to Binary</a></li>
-           <li><a class="dropdown-item" onclick="decitooctal()">Decimal to Octal</a></li>
-           <li><a class="dropdown-item" onclick="decitohexa()">Decimal to HexaDecimal</a></li>
-         </ul>
-       </div></div></div>
-<!---Octal-->
-      <div class="col-lg-3 col-6">
-        <div class="octal rounded-5">
-          <h1 class="text text-white">OCTAL</h1>
-        <p class="texts text-secondary">conversion</p>
-        <div class="dropdown">
-          <button type="button" class="btn btn-light dropdown-toggle" data-bs-toggle="dropdown">
-            OCTAL
-           </button> 
-           <ul class="dropdown-menu bg-warning">
-             <li><a class="dropdown-item" onclick="octaltobinary()">Octal to Binary</a></li>
-             <li><a class="dropdown-item" onclick="octaltodecimal()">Octal to Decimal</a></li>
-             <li><a class="dropdown-item" onclick="octaltohexa()">Octal to HexaDecimal</a></li>
-           </ul>
-         </div></div></div>
-<!---Hexa-->
-      <div class="col-lg-3 col-6">
-        <div class="hexa rounded-5">
-          <h1 class="text text-white">HEXADECIMAL</h1>
-        <p class="texts text-secondary">conversion</p>
-        <div class="dropdown">
-          <button type="button" class="btn btn-dark dropdown-toggle" data-bs-toggle="dropdown">
-            HEXADECIMAL
-           </button> 
-           <ul class="dropdown-menu bg-dark">
-             <li><a class="dropdown-item" onclick="hexatobinary()">HexaDecimal to Binary</a></li>
-             <li><a class="dropdown-item" onclick="hexatodecimal()">HexaDecimal to Decimal</a></li>
-             <li><a class="dropdown-item" onclick="hexatooctal()">HexaDecimal to Octal</a></li>
-           </ul>
-         </div></div></div>
+    <h2 id="title">Number Conversion </h2>
+    <div class="container-fluid">
+        <div class="row" id="container">
+            <div class="col-md-4" id="conversion-options">
+                <form>
+                    <fieldset>
+                        <legend>Convert From</legend>
+                        <label><input type="radio" name="fromNumberSystem" value="binary" onclick="updateButtons()"> Binary</label><br>
+                        <label><input type="radio" name="fromNumberSystem" value="decimal" onclick="updateButtons()"> Decimal</label><br>
+                        <label><input type="radio" name="fromNumberSystem" value="octal" onclick="updateButtons()"> Octal</label><br>
+                        <label><input type="radio" name="fromNumberSystem" value="hexadecimal" onclick="updateButtons()"> Hexadecimal</label>
+                    </fieldset>
+                    <br>
+                    <fieldset>
+                        <legend>Convert To</legend>
+                        <label><input type="radio" name="toNumberSystem" value="binary" onclick="updateButtons()"> Binary</label><br>
+                        <label><input type="radio" name="toNumberSystem" value="decimal" onclick="updateButtons()"> Decimal</label><br>
+                        <label><input type="radio" name="toNumberSystem" value="octal" onclick="updateButtons()"> Octal</label><br>
+                        <label><input type="radio" name="toNumberSystem" value="hexadecimal" onclick="updateButtons()"> Hexadecimal</label>
+                    </fieldset>
+                </form>
+            </div>
+
+            <div class="col-md-8" id="calculator">
+                <div id="calculator-display">
+                    <input type="text" id="userInput" readonly class="form-control">
+                </div>
+                <div id="calculator-buttons">
+                    <button id="btn1" onclick="appendToDisplay('1')">1</button>
+                    <button id="btn2" onclick="appendToDisplay('2')">2</button>
+                    <button id="btn3" onclick="appendToDisplay('3')">3</button>
+                    <button id="btn4" onclick="appendToDisplay('4')">4</button>
+                    <button id="btn5" onclick="appendToDisplay('5')">5</button>
+                    <button id="btn6" onclick="appendToDisplay('6')">6</button>
+                    <button id="btn7" onclick="appendToDisplay('7')">7</button>
+                    <button id="btn8" onclick="appendToDisplay('8')">8</button>
+                    <button id="btn9" onclick="appendToDisplay('9')">9</button>
+                    <button id="btn0" onclick="appendToDisplay('0')">0</button>
+                    <button id="btnA" onclick="appendToDisplay('A')">A</button>
+                    <button id="btnB" onclick="appendToDisplay('B')">B</button>
+                    <button id="btnC" onclick="appendToDisplay('C')">C</button>
+                    <button id="btnD" onclick="appendToDisplay('D')">D</button>
+                    <button id="btnE" onclick="appendToDisplay('E')">E</button>
+                    <button id="btnF" onclick="appendToDisplay('F')">F</button>
+                    <button id="btn1" onclick="backspace()">←</button> 
+                    <button id="btnConvert" onclick="convert()">
+                        <i class="fas fa-exchange-alt"></i> 
+                    </button>
+                    <button id="btnReset" onclick="resetCalculator()">
+                        <i class="fas fa-undo"></i> 
+                    </button>
+                </div>
+            </div>
+            <button id="logout-button" onclick="logout()">Log-out</button>
+        </div>
+        
     </div>
-  </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-<!---Binary to decimal-->
-  <div class="text-white d-flex align-items-center justify-content-center">
-<div id="bintodeci" class="mt-5 text-center" style="display:none;">
-    <h1>Binary to Decimal</h1>
-    <label for="bintodeciInput">Binary: </label>
-    <input type="text" id="bintodeciInput" class="rounded-2 text-dark" placeholder="ex. 0/1">
-    <button onclick="convertBintoDeci()" class="rounded-2  text-dark">Convert</button>
-    <button onclick="deleteInput('bintodeciInput')" class="rounded-2 text-dark">Delete</button>
-    <p class="">Decimal: <span style="font-size:20px;" id="deci"></span></p>
-  </div>
+    <script>
+       function updateButtons() {
+            const fromNumberSystem = document.querySelector('input[name="fromNumberSystem"]:checked').value;
+            const toNumberSystem = document.querySelector('input[name="toNumberSystem"]:checked').value;
 
-<!---Binary to Octal--> 
-  <div id="bintooctal" class="mt-5 text-center" style="display:none;">
-    <h1>Binary to Octal</h1>
-    <label for="bintooctalInput">Binary: </label>
-    <input type="text" id="bintooctalInput" class="rounded-2 text-dark" placeholder="ex. 0/1">
-    <button onclick="convertBintoOctal()" class="rounded-2 text-dark">Convert</button>
-    <button onclick="deleteInput('bintooctalInput')" class="rounded-2 text-dark">Delete</button>
-    <p class="">Octal: <span style="font-size:20px;" id="octa"></span></p>
-  </div>
+            const buttons = ['btn0', 'btn1', 'btn2', 'btn3', 'btn4', 'btn5', 'btn6', 'btn7', 'btn8', 'btn9', 'btnA', 'btnB', 'btnC', 'btnD', 'btnE', 'btnF'];
 
-<!---Binary to Hexa decimal-->
-  <div id="bintohexa" class="mt-5 text-center" style="display:none;">
-    <h1>Binary to HexaDecimal</h1>
-    <label for="hexaInput">Binary: </label>
-    <input type="text" id="hexaInput" class="rounded-2 text-dark" placeholder="ex. 0/1">
-    <button onclick="convertBintoHexa()" class="rounded-2 text-dark">Convert</button>
-    <button onclick="deleteInput('hexaInput')" class="rounded-2 text-dark">Delete</button>
-    <p class="">HexaDecimal: <span style="font-size:20px;" id="hexa"></span></p>
-  </div>
-  
-<!---Decimal to Binary-->
-  <div id="decitobin" class="mt-5 text-center" style="display:none;">
-    <h1>Decimal to Binary</h1>
-    <label for="decimalInput">Decimal:</label>
-    <input type="text" id="decimalInput" class="rounded-2 text-dark" placeholder="ex. 123">
-    <button onclick="convertDecitoBin()" class="rounded-2 text-dark">Convert</button>
-    <button onclick="deleteInput('decimalInput')" class="rounded-2 text-dark">Delete</button>
-    <p class="">Binary: <span style="font-size:20px;" id="decitobinary"></span></p>
-  </div>
+            buttons.forEach(buttonId => {
+                const button = document.getElementById(buttonId);
 
-<!---Decimal to Octal-->
-  <div id="decitooctal" class="mt-5 text-center" style="display:none;">
-<h1>Decimal to Octal</h1>
-<label for="decitooctalInput">Decimal:</label>
-<input type="text" id="decitooctalInput" class="rounded-2 text-dark" placeholder="ex. 123">
-<button onclick="decitooct()" class="rounded-2 text-dark">Convert</button>
-<button onclick="deleteInput('decitooctalInput')" class="rounded-2 text-dark">Delete</button>
-<p class="">Octal: <span span style="font-size:20px;" id="octalOutput"></span></p>
-</div>
+                if (
+                    (fromNumberSystem === 'binary' && parseInt(button.innerText, 16) <= 1) ||
+                    (fromNumberSystem === 'decimal' && parseInt(button.innerText, 16) <= 9) ||
+                    (fromNumberSystem === 'octal' && parseInt(button.innerText, 16) <= 7) ||
+                    (fromNumberSystem === 'hexadecimal' && !isNaN(parseInt(button.innerText, 16)))
+                ) {
+                    button.disabled = false;
+                } else {
+                    button.disabled = true;
+                }
+            });
 
-<!---Decimal to Hexa Decimal-->
-<div id="decitohexa" class="mt-5 text-center" style="display:none;">
-<h1>Decimal to HexaDecimal</h1>
-<label for="decitohexaInput">Decimal: </label>
-<input type="text" id="decitohexaInput" class="rounded-2 text-dark" placeholder="ex. 123">
-<button onclick="convertDecitoHexa()"  class="rounded-2 text-dark">Convert</button>
-<button onclick="deleteInput('decitohexaInput')" class="rounded-2 text-dark">Delete</button>
-<p class="">HexaDecimal: <span span style="font-size:20px;"id="hexaOutput"></span></p>
-</div>
+            const toNumberSystemRadios = document.getElementsByName('toNumberSystem');
+            toNumberSystemRadios.forEach(radio => {
+                radio.disabled = radio.value === fromNumberSystem;
+            });
 
-<!---Octal to bin-->
-<div id="octaltobin" class="mt-5 text-center" style="display:none;">
-  <h1>Octal to Binary</h1>
-  <label for="octaltobinaryInput">Octal: </label>
-  <input type="text" id="octaltobinaryInput" class="rounded-2 text-dark" placeholder="ex. 0-7">
-  <button onclick="convertOctaltoBin()" class="rounded-2 text-dark">Convert</button>
-  <button onclick="deleteInput('octaltobinaryInput')" class="rounded-2 text-dark">Delete</button>
-  <p class="">Binary:<span span style="font-size:20px;" id="octaltobinaryOutput"></span></p>
-  </div>
+            resetCalculator();
+        }
 
-<!---Octal to Decimal-->
-<div id="octaltodeci" class="mt-5 text-center" style="display:none;">
-  <h1>Octal to Decimal</h1>
-  <label for="octaltodeciInput">Octal: </label>
-  <input type="text" id="octaltodeciInput" class="rounded-2 text-dark" placeholder="ex. 0-7">
-  <button onclick="convertOctalToDeci()" class="rounded-2 text-dark">Convert</button>
-  <button onclick="deleteInput('octaltodeciInput')" class="rounded-2 text-dark">Delete</button>
-  <p class="">Decimal: <span span style="font-size:20px;" id="octaltodeciOutput"></span></p>
-  </div>
+        function appendToDisplay(value) {
+    const fromNumberSystem = document.querySelector('input[name="fromNumberSystem"]:checked').value;
+    const toNumberSystem = document.querySelector('input[name="toNumberSystem"]:checked').value;
 
-<!---Octal to Hexa Decimal-->
-  <div id="octaltohex" class="mt-5 text-center" style="display:none;">
-    <h1>Octal to HexaDecimal</h1>
-    <label for="octaltohexaInput">Octal: </label>
-    <input type="text" id="octaltohexaInput" class="rounded-2 text-dark" placeholder="ex. 0-7">
-    <button onclick="convertOctalToHexa()" class="rounded-2 text-dark">Convert</button>
-    <button onclick="deleteInput('octaltohexaInput')" class="rounded-2 text-dark">Delete</button>
-    <p class="">HexaDecimal: <span span style="font-size:20px;" id="octaltohexaOutput"></span></p>
-    </div>
+    if (fromNumberSystem === 'binary' && toNumberSystem === 'binary') {
+        if (value === '1' || value === '0') {
+            return;
+        }
+    }
+    if (fromNumberSystem === 'decimal' && toNumberSystem === 'decimal') {
+        if (!/^[0-9]$/.test(value)) {
+            return;
+        }
+    }
 
-<!---Hexa Decimal to Binary-->
-   <div id="hexatobin" class="mt-5 text-center" style="display:none;">
-    <h1>Hexadecimal to Binary</h1>
-<label for="hexatobinInput">HexaDecimal: </label>
-<input type="text" id="hexatobinInput"  class="rounded-2 text-dark" placeholder="ex. 0-9/A-F">
-<button onclick="convertHexToBinary()" class="rounded-2 text-dark">Convert</button>
-<button onclick="deleteInput('hexatobinInput')" class="rounded-2 text-dark">Delete</button>
-<p class="">Binary: <span span style="font-size:20px;" id="hexatobinOutput"></span></p>
-    </div>
+    if (fromNumberSystem === 'octal' && toNumberSystem === 'octal') {
+        if (/^[0-7]$/.test(value)) {
+            return;
+        }
+    }
+    if (fromNumberSystem === 'hexadecimal' && toNumberSystem === 'hexadecimal') {
+        if (/^[0-9A-F]$/.test(value)) {
+            return;
+        }
+    }
 
-<!---Hexa Decimal to Decimal-->
-   <div id="hexatodeci" class="mt-5 text-center" style="display:none;">
-    <h1>HexaDecimal to Decimal</h1>
-<label for="hexatodeciInput">HexaDecimal: </label>
-<input type="text" id="hexatodeciInput"  class="rounded-2 text-dark" placeholder="ex. 0-9/A-F">
-<button onclick="convertHexaToDecimal()" class="rounded-2 text-dark">Convert</button>
-<button onclick="deleteInput('hexatodeciInput')" class="rounded-2 text-dark">Delete</button>
-<p class="">Decimal: <span span style="font-size:20px;" id="hexatodeciOutput"></span></p>
-    </div>
+    displayValue += value;
+    document.getElementById('userInput').value = displayValue;
+}
 
-<!---Hexa Decimal to Octal-->
-<div id="hexatooct" class="mt-5 text-center" style="display:none;">
-  <h1>HexaDecimal to Octal</h1>
-<label for="hexatooctalInput">Hexadecimal: </label>
-<input type="text" id="hexatooctalInput"  class="rounded-2 text-dark" placeholder="ex. 0-9/A-F">
-<button onclick="convertHexaToOctal()" class="rounded-2 text-dark">Convert</button>
-<button onclick="deleteInput('hexatooctalInput')" class="rounded-2 text-dark">Delete</button>
-<p class="">Decimal: <span span style="font-size:20px;" id="hexatooctalOutput"></span></p>
-  </div>
-</div> 
 
+        function convert() {
+            const fromNumberSystem = document.querySelector('input[name="fromNumberSystem"]:checked').value;
+            const toNumberSystem = document.querySelector('input[name="toNumberSystem"]:checked').value;
+            
+            if (fromNumberSystem === toNumberSystem) {
+              alert('Cannot perform the same conversion. Please choose different options.');
+              return;
+            }
+
+            if (displayValue.trim() === '') {
+                alert('Please enter a value to convert.');
+                return;
+    }
+
+
+            let result;
+            if (fromNumberSystem === 'binary' && toNumberSystem === 'decimal') {
+                result = parseInt(displayValue, 2);
+            } else if (fromNumberSystem === 'binary' && toNumberSystem === 'octal') {
+                result = (parseInt(displayValue, 2)).toString(8);
+            } else if (fromNumberSystem === 'binary' && toNumberSystem === 'hexadecimal') {
+                result = (parseInt(displayValue, 2)).toString(16).toUpperCase();
+            } else if (fromNumberSystem === 'decimal' && toNumberSystem === 'binary') {
+                result = (parseInt(displayValue)).toString(2);
+            } else if (fromNumberSystem === 'decimal' && toNumberSystem === 'octal') {
+                result = (parseInt(displayValue)).toString(8);
+            } else if (fromNumberSystem === 'decimal' && toNumberSystem === 'hexadecimal') {
+                result = (parseInt(displayValue)).toString(16).toUpperCase();
+            } else if (fromNumberSystem === 'octal' && toNumberSystem === 'binary') {
+                result = (parseInt(displayValue, 8)).toString(2);
+            } else if (fromNumberSystem === 'octal' && toNumberSystem === 'decimal') {
+                result = parseInt(displayValue, 8);
+            } else if (fromNumberSystem === 'octal' && toNumberSystem === 'hexadecimal') {
+                result = (parseInt(displayValue, 8)).toString(16).toUpperCase();
+            } else if (fromNumberSystem === 'hexadecimal' && toNumberSystem === 'binary') {
+                result = (parseInt(displayValue, 16)).toString(2);
+            } else if (fromNumberSystem === 'hexadecimal' && toNumberSystem === 'decimal') {
+                result = parseInt(displayValue, 16);
+            } else if (fromNumberSystem === 'hexadecimal' && toNumberSystem === 'octal') {
+                result = (parseInt(displayValue, 16)).toString(8);
+            } else {
+                result = displayValue;
+            }
+
+            document.getElementById('userInput').value = result;
+        }
+
+        function backspace() {
+            displayValue = displayValue.slice(0, -1);
+            document.getElementById('userInput').value = displayValue;
+        }
+
+        function resetCalculator() {
+            displayValue = '';
+            document.getElementById('userInput').value = '';
+        }
+        function logout() {
+            alert('Logging Out...');
+            window.location.href = 'log.html';
+        }
+    </script>
 </body>
 </html>
